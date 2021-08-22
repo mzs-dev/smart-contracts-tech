@@ -65,6 +65,7 @@ contract Token is IERC20, IMintableToken, IDividends {
   function transferFrom(address from, address to, uint256 value) external override returns (bool) {
     allowances[from][msg.sender] = allowances[from][msg.sender].sub(value, "transferFrom: value exceeds allowance");
     transferHelper(from, to, value);
+    return true;
   }
 
   //To be called by transfer and transferFrom functions
